@@ -1,276 +1,759 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#062923">
-<meta name="description" content="Independent educational guide to KWSP i-Invest and Public Asia Ittikal Fund (PAIF): risk, eligibility, fees, past performance and hypothetical compound-return calculator.">
-<title>Beyond the Foundation — KWSP i-Invest × PAIF</title>
-<style>
-:root{--ink:#143c31;--ink2:#294f42;--muted:#698074;--bg:#edf1e9;--cream:#faf9f3;--card:#fffefa;--dark:#092e27;--deep:#061d1b;--gold:#e3b96e;--sage:#cae5d4;--lime:#75ad83;--line:#dbe5d9;--red:#bd675a;--blue:#6d92a8;--shadow:0 28px 80px rgba(5,32,24,.22)}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0%,#235644 0%,#0d2d27 48%,#061b18 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
-a{color:inherit;text-underline-offset:3px}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #e5b45d;outline-offset:3px}button:disabled{opacity:.3;cursor:default}
-button,input,select{touch-action:manipulation}
-.app{max-width:1540px;margin:0 auto;padding:20px 26px 5px}
-.topline{display:flex;justify-content:space-between;align-items:center;color:#bfd7c9;font-size:11px;font-weight:750;letter-spacing:.16em;text-transform:uppercase;margin:0 4px 14px}.topline strong{color:#edd6a0}
-.shell{display:grid;grid-template-columns:62px minmax(0,1fr);gap:15px;align-items:stretch}
-.rail{border:1px solid #ffffff30;border-radius:19px;display:flex;flex-direction:column;align-items:center;padding:17px 8px;background:#163e3396;gap:12px;backdrop-filter:blur(8px)}
-.rail .rtitle{color:#b6d9c7;font-size:8px;letter-spacing:.14em;writing-mode:vertical-rl;transform:rotate(180deg);margin:12px 0 28px;font-weight:800}
-.dot{width:28px;height:28px;display:grid;place-items:center;border:1px solid #6f9c8766;border-radius:50%;font-size:10px;background:transparent;color:#a6ccba;transition:.2s}.dot.current{background:var(--gold);color:#183a31;border-color:var(--gold);box-shadow:0 0 0 4px #e3b96e28}.dot:hover{border-color:var(--gold)}
-.stage{position:relative;aspect-ratio:16/9;min-height:590px;border-radius:20px;background:var(--cream);overflow:hidden;box-shadow:var(--shadow)}
-.slide{position:absolute;inset:0;display:none;flex-direction:column;padding:4% 5.2% 2.7%;background:var(--cream);overflow:auto}
-.slide.active{display:flex;animation:enter .26s ease both}.slide.dark{background:var(--dark);color:#fff}.slide.mid{background:#e8efe8}
-@keyframes enter{from{opacity:.25;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.slide:after{content:"";position:absolute;pointer-events:none;right:0;top:0;width:23%;height:25%;background:linear-gradient(225deg,#cbdbc944,transparent);opacity:.55}.slide.dark:after{background:linear-gradient(225deg,#8ac9aa22,transparent)}
-.header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:2%;position:relative;z-index:1}.eyebrow{font-size:clamp(9px,.79vw,12px);text-transform:uppercase;letter-spacing:.22em;font-weight:850;color:#33836b}.dark .eyebrow{color:#88c7a4}.num{font-family:Georgia,serif;font-size:17px;letter-spacing:-.05em;color:#88a395}.dark .num{color:#8ab5a0}
-h1,h2,h3,p{margin:0}h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.052em;line-height:1.02}h1{font-size:clamp(44px,5.6vw,91px);margin:5% 0 3%;max-width:950px}h2{font-size:clamp(32px,3.65vw,58px);margin:0 0 1.4%;max-width:970px}h3{font-size:clamp(17px,1.28vw,23px);line-height:1.25;font-weight:800}
-.lead{font-size:clamp(13px,1.22vw,19px);line-height:1.56;color:#61796e;max-width:880px}.dark .lead{color:#cae1d5}
-.gold{color:var(--gold)}.green{color:#218264}.muted{color:var(--muted)}
-.tags{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}.tag{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:30px;border:1px solid #ffffff4c;color:#e3efdf;font-size:11px;font-weight:700;letter-spacing:.05em}
-.metric-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:auto;margin-bottom:23px}
-.metric{border:1px solid #fff3;background:#123f33a8;border-radius:13px;padding:18px 19px;min-height:94px}.metric strong{font-family:Georgia,serif;font-size:clamp(25px,2.5vw,39px);color:var(--gold);display:block;line-height:1}.metric span{display:block;font-size:11px;color:#c7dace;margin-top:11px;line-height:1.4}
-.hero-orbit{position:absolute;right:-9%;top:8%;width:50%;aspect-ratio:1;border-radius:50%;border:1px solid #a6dfb351;pointer-events:none;box-shadow:0 0 0 52px #98d7af06,0 0 0 100px #98d7af04}
-.hero-orbit:before,.hero-orbit:after{content:"";position:absolute;border-radius:50%;inset:15%;border:1px solid #e3b96e7e}.hero-orbit:after{inset:34%;border:2px solid #8ccea9b3}
-.footer{margin-top:auto;padding-top:1.2%;border-top:1px solid #d9e4d8;display:flex;justify-content:space-between;align-items:center;gap:16px;color:#6e8174;font-size:clamp(8px,.68vw,11px);line-height:1.35}.dark .footer{border-color:#31564a;color:#9fc3af}.footer a{white-space:nowrap}.footer span:last-child{white-space:nowrap}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:3% 0}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:3% 0}.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;position:relative;overflow:hidden;box-shadow:0 10px 27px #254b3510}
-.panel.darkpanel{background:#0f4135;border-color:#2c6a52;color:white}.panel .micro{color:#338169;font-size:10px;letter-spacing:.14em;font-weight:900;text-transform:uppercase;display:block;margin-bottom:11px}.panel.darkpanel .micro{color:#a8debf}
-.panel p{font-size:clamp(12px,1vw,16px);line-height:1.5;color:#658076;margin-top:10px}.panel.darkpanel p{color:#d0e7d8}
-.panel.emph{background:#194f3f;color:#fff;border-color:#194f3f}.panel.emph p{color:#d4e9dc}
-.insight{border-radius:11px;padding:14px 18px;background:#e2eee1;border:1px solid #cbe0c9;display:flex;gap:12px;align-items:flex-start;font-size:clamp(11px,.94vw,15px);font-weight:650;line-height:1.4}.insight .spark{font-size:17px;flex:0 0 auto}.insight.warn{background:#fff2e4;border-color:#edcfaf;color:#7d542c}
-.steps{display:flex;gap:12px;align-items:center;margin:3% 0 3%;}.step{flex:1;min-height:97px;background:#fffefa;border:1px solid #d9e4d9;border-radius:11px;padding:19px}.step span{color:#358066;display:block;font-size:10px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;margin-bottom:9px}.step strong{font-size:clamp(12px,1vw,16px)}.step-arrow{color:#4d8671;font-size:24px}
-.inputlabel{display:block;font-size:11px;font-weight:800;color:#375e50;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}.dark .inputlabel{color:#c8e0d1}
-.field{background:#fff;border:1px solid #cddfd2;color:#14392f;min-height:45px;border-radius:8px;padding:10px 12px;width:100%;font-size:16px;font-weight:700}
-.field:focus{border-color:#3c9a70;outline:2px solid #d2ead9}
-.result-tile{background:#0f4537;border-radius:15px;padding:25px;color:#fff;display:flex;flex-direction:column;justify-content:space-between}
-.result-tile .micro{color:#a4d3b6;font-size:11px;font-weight:850;letter-spacing:.13em;text-transform:uppercase}
-.big-number{font-family:Georgia,serif;font-size:clamp(30px,3.5vw,56px);line-height:1.1;color:#f1cf8e;letter-spacing:-.05em}
-.result-tile small{font-size:11px;color:#d1e2d5;line-height:1.55}
-.mini-stat{font-family:Georgia,serif;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.05em;color:#1d7155;line-height:1.05;margin:8px 0}.statdesc{font-size:12px;color:#698274;line-height:1.5}
-.assetbar{height:32px;display:flex;border-radius:9px;overflow:hidden;background:#dee9df;margin:15px 0}.assetbar .equity{width:75%;background:#1a7755}.assetbar .other{flex:1;background:#d7b775}
-.legend{display:flex;gap:15px;align-items:center;font-size:12px;color:#5f7a6d;flex-wrap:wrap}.legend i{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:6px}
-.country{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.country span{border:1px solid #dde9da;background:#eef4e9;border-radius:6px;font-size:11px;padding:6px 8px;font-weight:700;color:#517563}
-.return-columns{display:grid;grid-template-columns:1.45fr 1fr;gap:22px;margin:3% 0}
-.return-plot{background:#fff;border:1px solid #dce9dd;border-radius:14px;padding:22px}
-.return-bars{display:flex;justify-content:space-around;align-items:center;gap:12px;height:195px;border-bottom:1px solid #c7d8cb;margin-top:6px}
-.return-item{height:100%;flex:1;position:relative;display:flex;justify-content:center;align-items:center}
-.return-item .stem{position:absolute;left:37%;width:26%;border-radius:6px;bottom:50%;height:var(--h);background:#4b9871}
-.return-item.neg .stem{bottom:auto;top:50%;background:#c36b61}
-.return-item .v{font-size:clamp(11px,1vw,15px);font-weight:900;position:absolute;bottom:calc(50% + var(--h) + 5px);color:#167a55}
-.return-item.neg .v{bottom:auto;top:calc(50% + var(--h) + 5px);color:#b85548}
-.return-item .yr{font-size:12px;font-weight:750;position:absolute;bottom:-24px;color:#526b5a}
-.formula{font-size:11px;color:#567369;line-height:1.5;margin-top:36px}
-.comparison{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:12px}.comparison .pillbox{background:#f1f4e9;border:1px solid #dce8d8;border-radius:11px;padding:17px}.comparison strong{font-family:Georgia,serif;font-size:clamp(27px,2.7vw,42px);color:#1c6e50;display:block;line-height:1.05}.comparison span{font-size:11px;color:#6c8173;display:block;margin-top:8px;line-height:1.35}
-.calc-layout{display:grid;grid-template-columns:39% 1fr;gap:19px;margin:2% 0;flex:1;min-height:0}
-.controls{background:#f2f4ea;border:1px solid #dbe7d9;border-radius:15px;padding:19px;min-height:0}
-.controls .field{font-size:15px;min-height:39px;padding:8px 10px}
-.control-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px}
-.sliderrow{margin:10px 0}.sliderrow .sl-head{display:flex;justify-content:space-between;align-items:center;margin:8px 0;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#456a56}
-input[type=range]{accent-color:#23754e;width:100%;height:16px;cursor:pointer}
-.presets{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.preset{border:1px solid #b9d2c1;border-radius:6px;background:white;color:#2a6249;padding:7px 8px;font-size:11px;font-weight:800}.preset.active{background:#226f50;color:white;border-color:#226f50}
-.forecast{border-radius:15px;background:#0d3c31;padding:23px;color:white;display:flex;flex-direction:column;overflow:hidden}
-.forecast .micro{color:#9bd7b0;text-transform:uppercase;letter-spacing:.14em;font-weight:800;font-size:10px}
-.forecast .number{font-family:Georgia,serif;font-size:clamp(36px,3.8vw,61px);color:#f2d18d;letter-spacing:-.055em;margin:6px 0;line-height:1}
-.forecast .compare{display:flex;gap:20px;margin-top:7px;font-size:12px;color:#d1e7d9;flex-wrap:wrap}.forecast .compare b{color:#fff}
-#forecastChart{height:auto;flex:1;width:100%;min-height:145px;margin-top:16px;overflow:visible}
-.forecast .chartlegend{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:11px;color:#d3e6d9}.chartlegend i{width:14px;height:3px;border-radius:2px;display:inline-block;vertical-align:middle;margin-right:4px}
-.forecastnote{margin-top:8px;color:#b6d2bd;font-size:10px;line-height:1.4}
-.matrix{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:3% 0}.scenario{border:1px solid #d8e3d7;border-radius:13px;background:#fff;padding:19px}.scenario .micro{font-size:10px;color:#648072;text-transform:uppercase;letter-spacing:.1em;font-weight:900}.scenario strong{display:block;font-family:Georgia,serif;font-size:clamp(24px,2.5vw,42px);color:#1b6b51;letter-spacing:-.06em;line-height:1.05;margin:13px 0 7px}.scenario p{font-size:11px;color:#5b7768;line-height:1.4}.scenario.stress strong{color:#a85851}.scenario.focus{border:2px solid #318761;background:#edf5e8}.scenario .rate{font-size:13px;color:#54806b;font-weight:800}
-.fees{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:3% 0}.feeitem{background:#fffefa;border:1px solid #dce8dc;border-radius:13px;padding:20px}.feeitem b{font-family:Georgia,serif;font-size:clamp(25px,2.8vw,43px);color:#1b7155;display:block;line-height:1}.feeitem strong{font-size:14px;display:block;margin:12px 0 5px}.feeitem p{font-size:11px;color:#6c8276;line-height:1.5}
-.final-list{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:4% 0}.final-item{background:#155040;border:1px solid #2f6d55;color:white;padding:22px;border-radius:12px;min-height:120px}.final-item b{color:#e9c681;font-size:10px;letter-spacing:.16em}.final-item p{font-size:clamp(13px,1vw,16px);line-height:1.45;margin-top:12px}
-.nav{display:flex;gap:11px;justify-content:center;align-items:center;color:#d3e7d9;padding:12px 0;font-size:12px}
-.navbtn{border:1px solid #528271;background:#1a4b3e;border-radius:30px;color:#fff;padding:9px 16px;font-size:12px;font-weight:800}.navbtn:hover{background:#2c684e}
-.nav .count{min-width:51px;text-align:center;font-size:13px;font-weight:800}.nav .hint{color:#8bad9a;font-size:11px}
-@media(max-width:1000px){.stage{min-height:680px;aspect-ratio:auto}.slide{padding:32px 34px 25px}.shell{grid-template-columns:46px minmax(0,1fr)}h2{font-size:39px}h1{font-size:62px}.calc-layout{grid-template-columns:1fr 1fr}.forecast .number{font-size:42px}.return-columns{grid-template-columns:1fr 1fr}.matrix{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:650px){.app{padding:0}.topline{display:none}.shell{display:block}.rail{display:none}.stage{min-height:calc(100dvh - 62px);border-radius:0;width:100%;box-shadow:none}.slide{padding:27px 22px 23px}h1{font-size:49px;margin:45px 0 26px}h2{font-size:34px;margin:8px 0 17px}.lead{font-size:14px}.header{margin-bottom:12px}.hero-orbit{width:85%;right:-44%;top:17%;opacity:.46}.metric-strip{grid-template-columns:repeat(3,1fr);gap:7px}.metric{padding:12px 9px;min-height:92px}.metric strong{font-size:23px}.metric span{font-size:10px}.grid2,.grid3,.return-columns,.calc-layout,.fees,.final-list{grid-template-columns:1fr;gap:11px;margin:18px 0}.grid2 .panel,.grid3 .panel,.feeitem,.final-item{padding:17px}.panel p{font-size:12px}.steps{gap:5px;margin:16px 0;align-items:stretch}.step{padding:10px;min-height:85px}.step span{font-size:8px}.step strong{font-size:11px}.step-arrow{font-size:13px;align-self:center}.result-tile{padding:18px;min-height:150px}.grid2.eligibility{grid-template-columns:1fr}.return-plot{padding:18px}.return-bars{height:180px}.comparison strong{font-size:28px}.forecast{padding:18px;min-height:360px}.calc-layout{display:flex;flex-direction:column}.controls{padding:17px}.matrix{grid-template-columns:1fr 1fr;gap:9px}.scenario{padding:13px}.scenario strong{font-size:25px}.scenario p{font-size:10px}.fees{grid-template-columns:1fr 1fr}.feeitem b{font-size:24px}.feeitem strong{font-size:12px}.footer{margin-top:20px;font-size:9px;flex-wrap:wrap}.nav{height:62px;padding:10px 6px;gap:7px}.navbtn{padding:9px 12px;font-size:11px}.nav .hint{display:none}}
-@media(max-width:390px){.stage{min-height:760px}h2{font-size:31px}.grid2,.return-columns{gap:8px}.matrix{gap:6px}.scenario{padding:10px}.metric span{font-size:9px}}
-@media print{@page{size:landscape;margin:0}body{background:#fff}.app{padding:0;max-width:none}.topline,.rail,.nav{display:none!important}.shell{display:block}.stage{width:100%;overflow:visible;aspect-ratio:auto;box-shadow:none;border-radius:0}.slide{display:flex!important;position:relative;height:100vh;page-break-after:always;break-after:page;overflow:hidden;padding:36px 55px 30px;animation:none!important}.slide:last-child{page-break-after:auto}}
-</style>
-</head>
-<body>
-<div class="app">
-<header class="topline"><span>Independent investor education / KWSP i-Invest × PAIF</span><strong>October 2026 • Financial literacy brief</strong></header>
-<div class="shell">
-<aside class="rail" aria-label="Jump to slide"><div class="rtitle">EXPLORE THE BRIEF</div>
-<button class="dot current" data-jump="0" aria-label="Slide 1">01</button><button class="dot" data-jump="1" aria-label="Slide 2">02</button><button class="dot" data-jump="2" aria-label="Slide 3">03</button><button class="dot" data-jump="3" aria-label="Slide 4">04</button><button class="dot" data-jump="4" aria-label="Slide 5">05</button><button class="dot" data-jump="5" aria-label="Slide 6">06</button><button class="dot" data-jump="6" aria-label="Slide 7">07</button><button class="dot" data-jump="7" aria-label="Slide 8">08</button><button class="dot" data-jump="8" aria-label="Slide 9">09</button>
-</aside>
-<main class="stage" id="stage" aria-label="Presentation">
-<section class="slide dark active" aria-label="Slide 1: introduction">
-<div class="hero-orbit" aria-hidden="true"></div>
-<div class="header"><span class="eyebrow">A better retirement conversation</span><span class="num">01 / 09</span></div>
-<div style="position:relative;z-index:1"><h1>Your retirement.<br><span class="gold">More possibilities.</span></h1>
-<p class="lead" style="max-width:710px">Understanding when it may make sense to diversify <strong>eligible</strong> KWSP savings through Public Asia Ittikal Fund (PAIF).</p>
-<div class="tags"><span class="tag">✧ Shariah-compliant equity</span><span class="tag">◷ Long-term perspective</span><span class="tag">◇ Risks disclosed upfront</span></div></div>
-<div class="metric-strip" style="position:relative;z-index:1"><div class="metric"><strong>30%</strong><span>of eligible excess savings<br>may be invested</span></div><div class="metric"><strong>4.89%</strong><span>calculated FY2021–25<br>historical compound rate*</span></div><div class="metric"><strong>10 years</strong><span>interactive illustration<br>— never a guarantee</span></div></div>
-<div class="footer"><span>Not an official Public Mutual promotional document. *Historical CAGR derived from rounded fund returns.</span><span>Start with the facts →</span></div>
-</section>
-<section class="slide" aria-label="Slide 2: why diversify">
-<div class="header"><span class="eyebrow">01 / The philosophy</span><span class="num">02 / 09</span></div>
-<h2>Diversification is a choice.<br>Not a return competition.</h2>
-<p class="lead">KWSP already invests across asset classes. An additional unit trust is not automatically “more diversified”—its value depends on what exposure it adds and whether the investor can bear the risk.</p>
-<div class="grid2">
-<div class="panel"><span class="micro">Your foundation</span><h3>KWSP / EPF</h3><p>A retirement savings system with a diversified portfolio, subject to KWSP's investment decisions, dividend policies and withdrawal rules.</p></div>
-<div class="panel emph"><span class="micro" style="color:#a7d5bb">An optional allocation</span><h3>EPF Member Investment Scheme</h3><p>Eligible savings can be directed to approved funds with different managers and investment mandates. Market losses and extra charges are borne by the investor.</p></div>
-</div>
-<div class="insight"><span class="spark">✦</span><span><strong>Good diversification asks:</strong> Does the fund add a useful strategy—or simply more equity and geographic risk you already have?</span></div>
-<div class="footer"><a target="_blank" rel="noopener" href="https://www.kwsp.gov.my/en/member/savings/i-invest">Source: KWSP i-Invest</a><span>Different exposure ≠ guaranteed better outcomes</span></div>
-</section>
-<section class="slide mid" aria-label="Slide 3: kwsp how it works">
-<div class="header"><span class="eyebrow">02 / How the money moves</span><span class="num">03 / 09</span></div>
-<h2>Still your retirement savings.<br>Not an early cash-out.</h2>
-<p class="lead">Under age 55, investments through i-Invest remain retirement-linked. Proceeds on redemption are generally returned to KWSP while its control continues.</p>
-<div class="steps"><div class="step"><span>Step 01</span><strong>KWSP<br>Akaun Persaraan</strong></div><span class="step-arrow">→</span><div class="step"><span>Step 02</span><strong>Excess savings<br>above Basic Savings</strong></div><span class="step-arrow">→</span><div class="step"><span>Step 03</span><strong>Approved<br>unit trust</strong></div><span class="step-arrow">↩</span><div class="step"><span>Redemption</span><strong>Returns to KWSP<br>before release of control</strong></div></div>
-<div class="grid2"><div class="panel"><span class="micro">Potential benefit</span><h3>Exposure to a chosen investment strategy</h3><p>Possibility of higher or lower long-term returns depending on markets, fund decisions and fees.</p></div><div class="panel"><span class="micro">Important trade-off</span><h3>No KWSP dividend on the amount invested outside</h3><p>The transferred amount stops earning KWSP's annual dividends while it is invested through the scheme.</p></div></div>
-<div class="footer"><a target="_blank" rel="noopener" href="https://www.kwsp.gov.my/en/member/savings/i-invest">KWSP scheme rules and redemption details</a><span>Not intended to provide access to cash before 55</span></div>
-</section>
-<section class="slide" aria-label="Slide 4: eligibility calculator">
-<div class="header"><span class="eyebrow">03 / Interactive eligibility estimator</span><span class="num">04 / 09</span></div>
-<h2>How much could you invest?</h2>
-<p class="lead">Under the 2026 Basic Savings schedule, qualifying members below 55 may invest up to 30% of Akaun Persaraan savings above their age-based threshold. Minimum investment: RM1,000.</p>
-<div class="grid2 eligibility">
-<div class="panel"><div class="grid2" style="gap:13px;margin:0"><div><label class="inputlabel" for="age">Member's age</label><select id="age" class="field"></select></div><div><label class="inputlabel" for="epfBalance">Akaun Persaraan balance (RM)</label><input class="field" type="number" id="epfBalance" min="0" step="1000" value="120000"></div></div>
-<div style="margin-top:21px"><span class="micro">Age-based Basic Savings (2026)</span><div class="mini-stat" id="basicAmt">RM47,000</div></div>
-<div style="margin-top:13px"><span class="micro">Excess savings above Basic Savings</span><div class="mini-stat" id="excessAmt">RM73,000</div></div>
-<p class="statdesc">Personal values stay in this browser. Check actual eligibility in KWSP i-Akaun before an application.</p>
-</div>
-<div class="result-tile"><div><span class="micro">Estimated maximum eligible transfer</span><div class="big-number" id="eligibleAmt">RM21,900</div><p id="eligibilityText" style="font-size:13px;line-height:1.5;margin-top:14px;color:#d2e6d8">Up to 30% of excess savings, subject to EPF approval.</p></div><small>Estimation only. Actual eligibility is determined by KWSP and may change on its review cycle.</small></div></div>
-<div class="insight"><span class="spark">✦</span><span>Formula: <strong>max(0, Akaun Persaraan − applicable Basic Savings) × 30%</strong>. Investment is not available if the eligible amount is below RM1,000.</span></div>
-<div class="footer"><a target="_blank" rel="noopener" href="https://www.kwsp.gov.my/en/member/savings/i-invest">Source: 2026 age-based KWSP Basic Savings table</a><span>For qualifying members under 55</span></div>
-</section>
-<section class="slide" aria-label="Slide 5: fund DNA">
-<div class="header"><span class="eyebrow">04 / Inside the portfolio</span><span class="num">05 / 09</span></div>
-<h2>What is PAIF actually buying?</h2>
-<p class="lead">Public Asia Ittikal Fund is a Shariah-compliant equity fund seeking capital growth over the medium to long term, primarily in domestic and regional markets.</p>
-<div class="grid2">
-<div class="panel"><span class="micro">Normal asset mix / mandate</span><h3>Predominantly Shariah-compliant equities</h3><div class="assetbar"><div class="equity"></div><div class="other"></div></div><div class="legend"><span><i style="background:#1a7755"></i>75%–98% equities</span><span><i style="background:#d7b775"></i>Balance: sukuk / Islamic instruments</span></div><p style="margin-top:15px">The 75% shown is a schematic minimum normal equity exposure, <strong>not the current portfolio allocation</strong>. The mandate allows up to 98% foreign assets.</p></div>
-<div class="panel"><span class="micro">Markets described in the PHS</span><h3>Across Asia, plus selected other markets</h3><div class="country"><span>Malaysia</span><span>China</span><span>Japan</span><span>South Korea</span><span>Taiwan</span><span>India</span><span>Singapore</span><span>Hong Kong</span><span>ASEAN markets</span></div><p style="margin-top:15px">These are permitted locations, <strong>not a verified current geographic portfolio breakdown</strong>.</p></div>
-</div>
-<div class="grid3" style="margin-top:0"><div class="panel" style="padding:14px 19px"><span class="micro">Risk profile</span><h3>Very high (5 / 5)</h3></div><div class="panel" style="padding:14px 19px"><span class="micro">Suggested orientation</span><h3>3 years or more</h3></div><div class="panel" style="padding:14px 19px"><span class="micro">Capital guarantee</span><h3>No</h3></div></div>
-<div class="footer"><a target="_blank" rel="noopener" href="https://www.publicmutual.com.my/Product-Highlight?langcode=E&amp;sc=27">Source: PAIF Product Highlights Sheet, 30 Jan 2026</a><span>Read Prospectus and PHS before investing</span></div>
-</section>
-<section class="slide" aria-label="Slide 6: past performance">
-<div class="header"><span class="eyebrow">05 / A reality check</span><span class="num">06 / 09</span></div>
-<h2>Markets are not a straight line.</h2>
-<p class="lead">These are PAIF's financial-year total returns ended 31 October, sourced from its official Product Highlights Sheet. Even a five-year positive period contained a very difficult year.</p>
-<div class="return-columns">
-<div class="return-plot"><span class="eyebrow">Annual total returns / FY 2021–25</span><div class="return-bars">
-<div class="return-item" style="--h:32px"><span class="v">+8.41%</span><span class="stem"></span><span class="yr">2021</span></div>
-<div class="return-item neg" style="--h:94px"><span class="v">−30.94%</span><span class="stem"></span><span class="yr">2022</span></div>
-<div class="return-item" style="--h:32px"><span class="v">+8.47%</span><span class="stem"></span><span class="yr">2023</span></div>
-<div class="return-item" style="--h:45px"><span class="v">+13.30%</span><span class="stem"></span><span class="yr">2024</span></div>
-<div class="return-item" style="--h:104px"><span class="v">+37.97%</span><span class="stem"></span><span class="yr">2025</span></div>
-</div><p class="formula">Year-to-year NAV-to-NAV results. Actual investor results depend on entry date, sales charges and holding period.</p></div>
-<div><div class="comparison"><div class="pillbox"><strong id="cagrDisplay">4.89%</strong><span>Approx. compounded annual growth rate (CAGR), calculated from rounded FY2021–25 annual returns</span></div><div class="pillbox"><strong>5.38%</strong><span>Official PHS “average annual return” figure (different method)</span></div></div><div class="panel" style="padding:17px"><span class="micro">Why the numbers differ</span><p style="margin-top:0">The PHS divides the 5-year total return by five. A <strong>CAGR</strong> instead describes the constant compounded rate matching the same beginning and ending value. The calculator uses CAGR, not the PHS annual-average figure.</p></div></div>
-</div>
-<div class="insight"><span class="spark">!</span><span>Past performance is not predictive. Repeating the historical CAGR for 10 years is <strong>only one mathematical thought experiment</strong>, not a fund return forecast.</span></div>
-<div class="footer"><a href="https://www.publicmutual.com.my/Product-Highlight?langcode=E&amp;sc=27" target="_blank" rel="noopener">PAIF PHS, pp. 3–4 • 30 Jan 2026</a><span>FY2021–25 only; does not incorporate later performance</span></div>
-</section>
-<section class="slide" aria-label="Slide 7: 10-year forecast calculator">
-<div class="header"><span class="eyebrow">06 / Interactive what-if simulator</span><span class="num">07 / 09</span></div>
-<h2>If I invest today, what might 10 years look like?</h2>
-<p class="lead">Choose an amount, a horizon and an assumed annual rate. The historical-CAGR setting repeats PAIF's calculated FY2021–25 compounded rate purely as an illustration.</p>
-<div class="calc-layout">
-<div class="controls">
-<div class="control-grid"><div><label for="investment" class="inputlabel">One-off transfer (RM)</label><input id="investment" type="number" class="field" min="0" step="1000" value="20000"></div>
-<div><label for="years" class="inputlabel">Years held</label><select id="years" class="field"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div></div>
-<label for="fee" class="inputlabel">Upfront sales charge assumption</label>
-<select class="field" id="fee"><option value="3" selected>Agent/counter — up to 3%</option><option value=".5">KWSP i-Akaun — up to 0.5%</option><option value="0">0% (illustrative only)</option></select>
-<div class="sliderrow"><div class="sl-head"><label for="rate">Annual return assumption</label><strong id="rateLabel">4.89%</strong></div><input id="rate" type="range" min="-15" max="15" step=".25" value="4.89"></div>
-<div class="presets"><button class="preset" type="button" data-rate="-5">Stress −5%</button><button class="preset" type="button" data-rate="0">Flat 0%</button><button class="preset active" type="button" id="historyPreset">Historical CAGR</button><button class="preset" type="button" data-rate="8">Illustrative +8%</button></div>
-<p style="font-size:11px;color:#617b6a;line-height:1.45;margin:9px 0 0"><strong>Method:</strong> net amount after estimated upfront charge × (1 + selected annual rate) ^ years. No further top-ups.</p>
-</div>
-<div class="forecast">
-<div class="micro">Hypothetical ending investment value</div><div class="number" id="endValue">RM31,xxx</div>
-<div class="compare"><span>Invested after charge: <b id="netValue">RM19,417</b></span><span>Change vs original transfer: <b id="netGain">+RMxx</b></span></div>
-<svg id="forecastChart" viewBox="0 0 600 240" role="img" aria-label="Hypothetical annual growth comparison chart"></svg>
-<div class="chartlegend"><span><i style="background:#e8ca86"></i>Selected scenario</span><span><i style="background:#7b9fba"></i>Stress −5%</span><span><i style="background:#80be92"></i>Illustrative +8%</span></div>
-<div class="forecastnote">Smooth mathematical paths are not actual market paths. Real annual returns fluctuate. The selected historical NAV-based rate already reflects ongoing fund-level expenses; these are not deducted twice.</div>
-</div></div>
-<div class="insight warn" id="transferWarning" style="display:none"><span class="spark">!</span><span>The entered transfer exceeds the estimated i-Invest eligibility from Slide 4, or is below RM1,000. Adjust it or confirm the actual eligible amount with KWSP. This is still a mathematical illustration.</span></div>
-<div class="footer"><span>⚠ NOT a forecast, quote, or guaranteed return. No EPF dividends assumed on transferred funds.</span><span>07 / 09</span></div>
-</section>
-<section class="slide" aria-label="Slide 8: risk and cost sensitivity">
-<div class="header"><span class="eyebrow">07 / Sensitivity and opportunity cost</span><span class="num">08 / 09</span></div>
-<h2>The same investment. Four possible illustrations.</h2>
-<p class="lead">Compounding magnifies both gains and losses. Every number below uses the amount, years and selected initial charge from the previous calculator, with no extra contributions.</p>
-<div class="matrix">
-<div class="scenario stress"><span class="micro">Stress illustration</span><div class="rate">−5.00% p.a.</div><strong id="outStress">RM—</strong><p>Repeated negative years shrink the portfolio.</p></div>
-<div class="scenario"><span class="micro">Flat illustration</span><div class="rate">0.00% p.a.</div><strong id="outFlat">RM—</strong><p>No investment growth; initial charge still matters.</p></div>
-<div class="scenario focus"><span class="micro">Historical repetition</span><div class="rate" id="historicalRate">+4.89% p.a.</div><strong id="outHistory">RM—</strong><p>Repeats FY2021–25 historical CAGR; not an expected return.</p></div>
-<div class="scenario"><span class="micro">Higher-growth illustration</span><div class="rate">+8.00% p.a.</div><strong id="outUpside">RM—</strong><p>Purely assumed rate, not an analyst target.</p></div>
-</div>
-<div class="grid2"><div class="panel" style="padding:18px"><span class="micro">Initial cost matters</span><h3 id="chargeComparison">RM—</h3><p>Estimated value difference at the selected rate and horizon between a 3% and 0.5% sales charge for the same starting transfer.</p></div><div class="panel" style="padding:18px"><span class="micro">Opportunity cost remains</span><h3>KWSP dividends no longer accrue</h3><p>The illustration does not compare against a hypothetical KWSP balance; it must be evaluated separately against leaving that money in KWSP.</p></div></div>
-<div class="insight"><span class="spark">✦</span><span>These are <strong>scenarios, not probabilities</strong>. Returns will not arrive as smooth identical annual percentages, and actual results may lie outside this set.</span></div>
-<div class="footer"><a target="_blank" rel="noopener" href="https://www.kwsp.gov.my/en/member/savings/i-invest">KWSP fee and dividend guidance</a><span>Charges may vary; confirm transaction method</span></div>
-</section>
-<section class="slide dark" aria-label="Slide 9: next steps">
-<div class="header"><span class="eyebrow">08 / Making a responsible decision</span><span class="num">09 / 09</span></div>
-<h2>Financial freedom starts<br>with <span class="gold">informed choices.</span></h2>
-<p class="lead">This is a tool for understanding options—not a reason to invest before you are ready.</p>
-<div class="final-list">
-<div class="final-item"><b>01 / GOALS</b><p>Is this money intended for retirement, rather than spending before age 55?</p></div>
-<div class="final-item"><b>02 / RISK</b><p>Could you remain invested through a substantial equity-market decline?</p></div>
-<div class="final-item"><b>03 / ELIGIBILITY</b><p>What is your actual amount available through KWSP i-Akaun?</p></div>
-<div class="final-item"><b>04 / DOCUMENTS</b><p>Read the latest PAIF Prospectus, Product Highlights Sheet and applicable charges.</p></div>
-</div>
-<div class="insight" style="background:#1a5142;border-color:#48745b;color:#fff"><span class="spark">✓</span><span>It is reasonable to conclude PAIF may not suit your retirement portfolio. <strong>The objective is a suitable decision, not an automatic sale.</strong></span></div>
-<div class="footer"><span><a href="https://www.kwsp.gov.my/en/member/savings/i-invest" target="_blank" rel="noopener">Official KWSP i-Invest</a> · <a href="https://www.publicmutual.com.my/Product-Highlight?langcode=E&amp;sc=27" target="_blank" rel="noopener">PAIF PHS</a></span><span>Educational content for discussion only · Review for marketing compliance</span></div>
-</section>
-</main>
-</div>
-<nav class="nav" aria-label="Presentation controls"><span class="hint">← → to navigate</span><button id="prev" class="navbtn" type="button">← Previous</button><span class="count" id="count">01 / 09</span><button id="next" class="navbtn" type="button">Next →</button><button id="fullscreen" class="navbtn" type="button">⛶ Fullscreen</button><button id="print" class="navbtn" type="button">Print / PDF</button></nav>
-</div>
-<script>
-(function(){
-"use strict";
-const root=document, slides=Array.from(root.querySelectorAll(".slide")), dots=Array.from(root.querySelectorAll("[data-jump]")), M=1000;
-const yrs=[2021,2022,2023,2024,2025], ret=[8.41,-30.94,8.47,13.30,37.97];
-const factor=ret.reduce(function(a,v){return a*(1+v/100)},1), historic=(Math.pow(factor,1/5)-1)*100;
-const basicArr=[900,1100,1500,1900,4000,6200,8500,11000,13700,16600,19600,22900,26300,30000,33900,38100,42400,47000,51900,57000,62400,68100,74000,80200,86700,93600,100000,108000,115000,124000,132000,141000,150000,160000,170000,181000,192000];
-const byId=function(id){return root.getElementById(id)};
-const money=function(n){return "RM"+Math.round(n).toLocaleString("en-MY")};
-const signed=function(n){return (n>=0?"+":"−")+money(Math.abs(n))};
-const pct=function(n){return (n>0?"+":"")+n.toFixed(2)+"%"};
-let slideIndex=0,startX=0;
-function go(i){slideIndex=Math.max(0,Math.min(slides.length-1,i));slides.forEach(function(el,j){el.classList.toggle("active",j===slideIndex);el.setAttribute("aria-hidden",String(j!==slideIndex))});dots.forEach(function(b,j){b.classList.toggle("current",j===slideIndex)});byId("count").textContent=String(slideIndex+1).padStart(2,"0")+" / 09";byId("prev").disabled=slideIndex===0;byId("next").disabled=slideIndex===slides.length-1;history.replaceState(null,"","#slide-"+(slideIndex+1))}
-byId("prev").onclick=function(){go(slideIndex-1)};
-byId("next").onclick=function(){go(slideIndex+1)};
-dots.forEach(function(b){b.onclick=function(){go(Number(b.dataset.jump))}});
-byId("fullscreen").onclick=function(){if(document.fullscreenElement){document.exitFullscreen()}else{byId("stage").requestFullscreen&&byId("stage").requestFullscreen()}};
-byId("print").onclick=function(){window.print()};
-root.addEventListener("keydown",function(e){if(["INPUT","SELECT","TEXTAREA","BUTTON"].includes(root.activeElement.tagName)&&e.key!=="Escape")return;if(["ArrowRight","PageDown"," "].includes(e.key)){e.preventDefault();go(slideIndex+1)}if(["ArrowLeft","PageUp"].includes(e.key)){e.preventDefault();go(slideIndex-1)}if(e.key==="Home")go(0);if(e.key==="End")go(slides.length-1)});
-byId("stage").addEventListener("touchstart",function(e){startX=e.changedTouches[0].screenX},{passive:true});
-byId("stage").addEventListener("touchend",function(e){const d=e.changedTouches[0].screenX-startX;if(Math.abs(d)>75&&e.target.closest("input,select")==null)go(slideIndex+(d<0?1:-1))},{passive:true});
-const ageEl=byId("age");
-for(let age=18;age<=54;age++){let opt=document.createElement("option");opt.value=String(age);opt.textContent=String(age)+" years";if(age===35)opt.selected=true;ageEl.appendChild(opt)}
-let maxEligible=0;
-function calcEligibility(){const age=Number(ageEl.value),bal=Math.max(0,Number(byId("epfBalance").value)||0),basic=basicArr[age-18];const excess=Math.max(0,bal-basic),max=excess*.3;maxEligible=max>=1000?max:0;byId("basicAmt").textContent=money(basic);byId("excessAmt").textContent=money(excess);byId("eligibleAmt").textContent=money(maxEligible);
-byId("eligibilityText").textContent=maxEligible>=1000?"Maximum mathematical estimate, subject to EPF account verification and scheme rules.":"Below RM1,000 threshold. Based on these inputs, the member cannot make a new MIS investment.";calcProjection()}
-ageEl.onchange=calcEligibility;byId("epfBalance").oninput=calcEligibility;
-byId("cagrDisplay").textContent=historic.toFixed(2)+"%";byId("historicalRate").textContent=pct(historic);byId("rate").value=String(historic);
-function projection(amount,year,rate,fee){const afterCharge=amount/(1+fee/100);return afterCharge*Math.pow(1+rate/100,year)}
-function chart(amount,year,fee,selectedRate){const svg=byId("forecastChart");const ns="http://www.w3.org/2000/svg";while(svg.firstChild)svg.removeChild(svg.firstChild);
-const settings=[{rate:-5,color:"#7b9fba",w:2,dash:"6 6"},{rate:8,color:"#80be92",w:2,dash:"6 6"},{rate:selectedRate,color:"#e8ca86",w:4,dash:""}];
-const points=settings.map(function(s){return Array.from({length:year+1},function(_,i){return projection(amount,i,s.rate,fee)})});let min=0,max=Math.max.apply(null,points.flat())*1.12;if(max<=0)max=1;
-const X=function(i){return 51+i/year*522};const Y=function(v){return 199-(v/max)*176};
-const el=function(tag,attrs,text){const e=document.createElementNS(ns,tag);Object.keys(attrs||{}).forEach(function(k){e.setAttribute(k,attrs[k])});if(text!=null)e.textContent=text;svg.appendChild(e);return e};
-for(let i=0;i<=4;i++){let val=max*i/4,y=Y(val);el("line",{x1:50,y1:y,x2:574,y2:y,stroke:"#47715c","stroke-opacity":".5","stroke-width":".7"});el("text",{x:43,y:y+4,"text-anchor":"end",fill:"#a6c8b5","font-size":"11"},val>=1000?"RM"+Math.round(val/1000)+"k":money(val))}
-el("text",{x:50,y:226,fill:"#b4d3bd","font-size":"11"},"Year 0");el("text",{x:570,y:226,fill:"#b4d3bd","font-size":"11","text-anchor":"end"},"Year "+year);
-points.forEach(function(series,idx){const s=settings[idx];const d=series.map(function(v,i){return (i===0?"M":"L")+X(i).toFixed(1)+" "+Y(v).toFixed(1)}).join(" ");let attrs={d:d,fill:"none",stroke:s.color,"stroke-width":String(s.w),"stroke-linejoin":"round","stroke-linecap":"round"};if(s.dash)attrs["stroke-dasharray"]=s.dash;el("path",attrs);el("circle",{cx:X(year),cy:Y(series[series.length-1]),r:idx===2?"4.5":"2.5",fill:s.color})})}
-function calcProjection(){let amount=Math.min(1000000000,Math.max(0,Number(byId("investment").value)||0)),years=Number(byId("years").value),fee=Number(byId("fee").value),rate=Number(byId("rate").value);
-byId("rateLabel").textContent=pct(rate);const net=amount/(1+fee/100),value=projection(amount,years,rate,fee);
-byId("endValue").textContent=money(value);byId("netValue").textContent=money(net);byId("netGain").textContent=signed(value-amount);
-byId("outStress").textContent=money(projection(amount,years,-5,fee));
-byId("outFlat").textContent=money(projection(amount,years,0,fee));
-byId("outHistory").textContent=money(projection(amount,years,historic,fee));
-byId("outUpside").textContent=money(projection(amount,years,8,fee));
-byId("chargeComparison").textContent=money(Math.abs(projection(amount,years,rate,.5)-projection(amount,years,rate,3)));
-byId("transferWarning").style.display=(amount<1000||amount>maxEligible)?"flex":"none";
-root.querySelectorAll(".preset").forEach(function(b){const bval=b.id==="historyPreset"?historic:Number(b.dataset.rate);b.classList.toggle("active",Math.abs(bval-rate)<.02)});
-chart(amount,years,fee,rate)}
-["investment","years","fee","rate"].forEach(function(id){byId(id).addEventListener(id==="years"||id==="fee"?"change":"input",calcProjection)});
-root.querySelectorAll(".preset").forEach(function(b){b.onclick=function(){byId("rate").value=String(b.id==="historyPreset"?historic:Number(b.dataset.rate));calcProjection()}});
-const hash=location.hash.match(/slide-(\d+)/);calcEligibility();go(hash?Number(hash[1])-1:0);
-})();
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1318" />
+    <meta
+      name="description"
+      content="A clearer retirement picture: 2026 KWSP eligibility, PRS tax relief, investment scenarios and a strict Shariah fund shortlist. Independent investor education."
+    />
+    <title>N Wealth Studio — Your future, in focus.</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2367e8bc'/%3E%3Cpath d='M9 24V8l14 16V8' fill='none' stroke='%230b1318' stroke-width='3'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="app.mjs"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to your dashboard</a>
+    <aside class="sidebar">
+      <a class="brand" href="#overview" aria-label="N Wealth Studio home"
+        ><span class="brand-symbol">N<span>↗</span></span
+        ><span>WEALTH<span class="brand-sub">STUDIO</span></span></a
+      >
+      <div class="nav-label">YOUR FINANCIAL PICTURE</div>
+      <nav aria-label="Main navigation">
+        <a class="nav-link active" href="#overview"
+          ><span data-icon="dashboard"></span>Overview<span
+            class="nav-dot"
+          ></span></a
+        ><a class="nav-link" href="#simulator"
+          ><span data-icon="chart"></span>Growth simulator</a
+        ><a class="nav-link" href="#calculators"
+          ><span data-icon="wallet"></span>KWSP eligibility</a
+        ><a class="nav-link" href="#prs"
+          ><span data-icon="receipt"></span>PRS tax relief</a
+        ><a class="nav-link" href="#funds"
+          ><span data-icon="layers"></span>Fund explorer<span class="nav-count"
+            >3</span
+          ></a
+        ><a class="nav-link" href="#allocation"
+          ><span data-icon="donut"></span>My allocation</a
+        >
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="side-note">
+          <span class="tiny-orbit">✧</span
+          ><strong>A little clarity.<br />A bigger tomorrow.</strong>
+          <p>Turn your possibilities into a plan.</p>
+          <button class="button secondary small" data-start>
+            Build my plan <span>↗</span>
+          </button>
+        </div>
+        <a href="#sources" class="source-nav"
+          ><span data-icon="shield"></span> Sources & methodology</a
+        >
+        <div class="independent">
+          Independent investor education<br />Not an official KWSP or Public
+          Mutual app
+        </div>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <div class="breadcrumb">
+          Your workspace <span>/</span> <strong>Wealth overview</strong>
+        </div>
+        <div class="top-actions">
+          <button
+            class="search-button"
+            id="search-open"
+            aria-label="Search tools"
+          >
+            <span data-icon="search"></span><span>Find a tool</span
+            ><kbd>Ctrl K</kbd></button
+          ><button
+            class="mode-toggle"
+            id="mode-toggle"
+            role="switch"
+            aria-checked="false"
+          >
+            <span data-icon="terminal"></span><span>Exchange mode</span
+            ><i></i></button
+          ><button class="avatar" data-start aria-label="Open my plan">
+            N
+          </button>
+        </div>
+      </header>
+      <main id="main">
+        <section id="overview" class="overview">
+          <div class="section-kicker">
+            <span class="status-dot"></span> BUILT FOR YOUR NEXT CHAPTER
+            <span class="date-stamp">MALAYSIA · 2026</span>
+          </div>
+          <div class="hero">
+            <div class="hero-copy">
+              <h1>Your future.<br /><span>More possibilities.</span></h1>
+              <p>
+                Bring your KWSP, cash and retirement goals into one clear
+                picture. Explore what your money could become.
+              </p>
+              <div class="hero-actions">
+                <button class="button primary" data-start>
+                  Build my wealth plan <span>↗</span></button
+                ><a href="#simulator" class="text-link"
+                  >Explore the simulator <span>↓</span></a
+                >
+              </div>
+              <div class="hero-trust">
+                <span data-icon="shield"></span> Shariah-focused
+                <i>·</i> Source-backed <i>·</i> No sign-up needed
+              </div>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+              <div class="orbit-glow"></div>
+              <div class="orbit-stage">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="orbit orbit-three"></div>
+                <div class="orbit-core">N<span>↗</span></div>
+              </div>
+              <div class="floating-label label-top">
+                <span class="status-dot"></span> GROW WITH PURPOSE
+              </div>
+              <div class="floating-label label-bottom">
+                <span>∞</span> A longer view. A clearer plan.
+              </div>
+              <div class="orbit-grid"></div>
+            </div>
+          </div>
+          <div class="metrics-grid">
+            <a href="#calculators" class="metric-card"
+              ><div class="metric-heading">
+                <span>YOUR KWSP POTENTIAL</span><span data-icon="wallet"></span>
+              </div>
+              <div class="metric-value" id="summary-epf"></div>
+              <div class="metric-foot">
+                <span class="pill green">2026 rules</span
+                ><span>Estimated eligible transfer ↗</span>
+              </div></a
+            ><a href="#prs" class="metric-card"
+              ><div class="metric-heading">
+                <span>PRS TAX SAVINGS</span><span data-icon="receipt"></span>
+              </div>
+              <div class="metric-value" id="summary-tax"></div>
+              <div class="metric-foot">
+                <span class="pill gold">Up to RM3,000 relief</span
+                ><span>Based on your inputs ↗</span>
+              </div></a
+            ><a href="#funds" class="metric-card"
+              ><div class="metric-heading">
+                <span>THE STRICT SHORTLIST</span
+                ><span data-icon="shield"></span>
+              </div>
+              <div class="metric-value">03<span>qualifying funds</span></div>
+              <div class="metric-foot">
+                <span class="pill green">Shariah</span
+                ><span>5Y & 10Y annualised &gt; 8% ↗</span>
+              </div></a
+            >
+          </div>
+        </section>
+        <section id="simulator" class="section-block">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">01 / LOOK AHEAD</div>
+              <h2>Small steps. Compounding possibilities.</h2>
+              <p>Make a change. See your potential future take shape.</p>
+            </div>
+            <span class="outline-pill"
+              ><span class="status-dot"></span> ILLUSTRATION, NOT A
+              FORECAST</span
+            >
+          </div>
+          <div class="simulator panel">
+            <div class="sim-controls">
+              <div
+                class="segmented"
+                id="route-tabs"
+                aria-label="Investment route"
+              >
+                <button class="selected" data-route="cash" aria-pressed="true">
+                  Cash</button
+                ><button data-route="epf" aria-pressed="false">KWSP</button
+                ><button data-route="prs" aria-pressed="false">PRS</button>
+              </div>
+              <label class="field-label" for="initial"
+                >Starting investment <span>MYR</span></label
+              >
+              <div class="amount-input">
+                <span>RM</span
+                ><input
+                  id="initial"
+                  type="number"
+                  value="10000"
+                  min="0"
+                  max="1000000"
+                  step="100"
+                />
+              </div>
+              <input
+                aria-label="Starting investment slider"
+                id="initial-range"
+                type="range"
+                min="0"
+                max="100000"
+                step="500"
+                value="10000"
+              />
+              <div class="range-labels">
+                <span>RM0</span><span>RM100k</span>
+              </div>
+              <label class="field-label" for="monthly"
+                >Monthly contribution <span>MYR</span></label
+              >
+              <div class="amount-input">
+                <span>RM</span
+                ><input
+                  id="monthly"
+                  type="number"
+                  value="500"
+                  min="0"
+                  max="100000"
+                  step="50"
+                />
+              </div>
+              <input
+                aria-label="Monthly contribution slider"
+                id="monthly-range"
+                type="range"
+                min="0"
+                max="5000"
+                step="50"
+                value="500"
+              />
+              <div class="range-labels"><span>RM0</span><span>RM5k</span></div>
+              <label class="field-label" for="years"
+                >Your time horizon
+                <output id="years-label">10 years</output></label
+              >
+              <div class="horizon-buttons">
+                <button data-years="3">3 years</button
+                ><button data-years="5">5 years</button
+                ><button data-years="10" class="selected">10 years</button>
+              </div>
+              <input
+                id="years"
+                aria-label="Investment years"
+                type="range"
+                min="1"
+                max="30"
+                step="1"
+                value="10"
+              />
+              <div class="rate-row">
+                <label for="rate">Assumed annual return</label>
+                <div>
+                  <input
+                    id="rate"
+                    type="number"
+                    min="-50"
+                    max="30"
+                    step="0.5"
+                    value="8"
+                  /><span>%</span>
+                </div>
+              </div>
+              <div class="rate-row">
+                <label for="fee">Sales charge on NAV</label>
+                <div>
+                  <input
+                    id="fee"
+                    type="number"
+                    min="0"
+                    max="10"
+                    step="0.1"
+                    value="5"
+                  /><span>%</span>
+                </div>
+              </div>
+              <p class="micro-note" id="route-note"></p>
+            </div>
+            <div class="sim-visual">
+              <div class="projection-top">
+                <div>
+                  <div class="eyebrow">
+                    ILLUSTRATIVE VALUE IN <span id="end-year">2036</span>
+                  </div>
+                  <div class="projection-value" id="projected-value"></div>
+                  <div class="gain-line" id="projected-gain"></div>
+                </div>
+                <button
+                  class="icon-button"
+                  id="download-projection"
+                  aria-label="Download projection as CSV"
+                  title="Download projection CSV"
+                >
+                  <span data-icon="download"></span>
+                </button>
+              </div>
+              <div class="chart-legend">
+                <span><i class="legend-dot green-bg"></i>Your scenario</span
+                ><span><i class="legend-dot grey-bg"></i>Contributed</span
+                ><span><i class="legend-dash"></i>−5% stress scenario</span>
+              </div>
+              <div class="chart-wrap">
+                <svg
+                  id="growth-chart"
+                  viewBox="0 0 750 280"
+                  role="img"
+                  aria-label="Hypothetical investment values by year"
+                ></svg>
+                <div class="chart-tooltip" id="chart-tooltip" hidden></div>
+              </div>
+              <label class="chart-inspect" for="inspect-year"
+                >Inspect a year
+                <input
+                  id="inspect-year"
+                  type="range"
+                  min="0"
+                  max="10"
+                  value="10" /><output id="inspect-value"></output
+              ></label>
+              <div class="projection-stats">
+                <div>
+                  <span>Total contributed</span
+                  ><strong id="total-contributed"></strong>
+                </div>
+                <div>
+                  <span>Investment gain / loss</span
+                  ><strong id="total-gain"></strong>
+                </div>
+                <div>
+                  <span>Sales charges paid</span
+                  ><strong id="total-fees"></strong>
+                </div>
+              </div>
+              <details class="method-details">
+                <summary>How this projection works</summary>
+                <p>
+                  Effective monthly compounding with contributions at month-end.
+                  Each gross contribution is divided by (1 + sales charge).
+                  Assumed returns are after recurring fund expenses; PRS account
+                  fees, tax, inflation and withdrawals are excluded.
+                  Distributions are reinvested. The −5% line is a stress
+                  illustration, not a worst-case limit. Actual losses can be
+                  greater. Past performance does not predict future results.
+                </p>
+              </details>
+            </div>
+          </div>
+          <div class="terminal-only panel">
+            <div class="eyebrow">SCENARIO TERMINAL · NO LIVE MARKET FEED</div>
+            <div id="scenario-table" class="table-scroll"></div>
+          </div>
+        </section>
+        <section id="calculators" class="section-block">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">02 / KNOW YOUR STARTING POINT</div>
+              <h2>Unlock the numbers behind your plan.</h2>
+            </div>
+            <a href="#sources" class="text-link">2026 rules & sources ↗</a>
+          </div>
+          <div class="calculator-grid">
+            <article class="panel calculator">
+              <div class="calculator-heading">
+                <div class="icon-tile"><span data-icon="wallet"></span></div>
+                <span class="pill green">KWSP / EPF</span>
+              </div>
+              <h3>What could you invest?</h3>
+              <p>
+                Check your potential transfer from Akaun Persaraan, previously
+                Account 1.
+              </p>
+              <div class="input-grid">
+                <label
+                  >Age<input
+                    id="age"
+                    type="number"
+                    min="18"
+                    max="100"
+                    step="1"
+                    value="35" /></label
+                ><label
+                  >Akaun Persaraan balance (RM)<input
+                    id="epf-balance"
+                    type="number"
+                    min="0"
+                    max="10000000"
+                    step="1000"
+                    value="120000"
+                /></label>
+              </div>
+              <label class="check-label"
+                ><input id="member" type="checkbox" checked />I meet KWSP
+                membership requirements
+                <span
+                  title="Malaysian citizen, permanent resident, or non-Malaysian who joined before 1 August 1998."
+                  >ⓘ</span
+                ></label
+              >
+              <div class="calculation-lines">
+                <div>
+                  <span>2026 Basic Savings for your age</span
+                  ><strong id="basic"></strong>
+                </div>
+                <div>
+                  <span>Eligible excess × 30%</span
+                  ><strong id="excess"></strong>
+                </div>
+              </div>
+              <div class="calculator-result">
+                <span>Estimated available to invest</span
+                ><strong id="epf-result"></strong>
+              </div>
+              <p id="epf-note" class="micro-note"></p>
+              <button id="use-epf" class="button secondary full">
+                Explore this amount <span>↗</span></button
+              ><a
+                class="source-link"
+                href="https://www.kwsp.gov.my/en/member/savings/i-invest"
+                target="_blank"
+                rel="noopener"
+                >KWSP · 2026 Basic Savings & eligibility ↗</a
+              >
+            </article>
+            <article class="panel calculator" id="prs">
+              <div class="calculator-heading">
+                <div class="icon-tile gold-tile">
+                  <span data-icon="receipt"></span>
+                </div>
+                <span class="pill gold">PRS / YA 2026</span>
+              </div>
+              <h3>Save for later. Save on tax.</h3>
+              <p>
+                See the relief you can claim and the estimated reduction in your
+                income tax.
+              </p>
+              <div class="input-grid">
+                <label
+                  >Annual PRS contribution (RM)<input
+                    id="prs-contribution"
+                    type="number"
+                    min="0"
+                    max="1000000"
+                    step="250"
+                    value="3000" /></label
+                ><label
+                  >Chargeable income before PRS (RM)<input
+                    id="tax-income"
+                    type="number"
+                    min="0"
+                    max="100000000"
+                    step="1000"
+                    value="80000"
+                /></label>
+              </div>
+              <div class="input-grid">
+                <label
+                  >Deferred annuity relief used (RM)<input
+                    id="annuity"
+                    type="number"
+                    min="0"
+                    max="3000"
+                    step="100"
+                    value="0" /></label
+                ><label
+                  >Tax residency<select id="resident">
+                    <option value="yes">Malaysian tax resident</option>
+                    <option value="no">Non-resident</option>
+                  </select></label
+                >
+              </div>
+              <div class="calculation-lines">
+                <div>
+                  <span>Claimable PRS relief</span
+                  ><strong id="prs-relief"></strong>
+                </div>
+                <div>
+                  <span>Unused shared relief limit</span
+                  ><strong id="prs-remaining"></strong>
+                </div>
+              </div>
+              <div class="calculator-result gold-result">
+                <span>Estimated income tax saving</span
+                ><strong id="tax-saving"></strong>
+              </div>
+              <p class="micro-note">
+                Enter income after other reliefs, including any annuity relief
+                above. Uses progressive resident rates, before rebates and
+                special regimes. Relief shares a RM3,000 cap with deferred
+                annuity and is available through YA2030.
+              </p>
+              <button id="use-prs" class="button secondary full">
+                Simulate this annual contribution <span>↗</span></button
+              ><a
+                class="source-link"
+                href="https://www.ppa.my/joining-prs/prs-tax-relief/"
+                target="_blank"
+                rel="noopener"
+                >PPA · PRS tax relief explained ↗</a
+              >
+            </article>
+          </div>
+        </section>
+        <section id="funds" class="section-block">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">03 / INVEST WITH INTENTION</div>
+              <h2>A higher bar. A focused shortlist.</h2>
+              <p>
+                Shariah-compliant. Both 5Y and 10Y annualised returns above 8%.
+              </p>
+            </div>
+            <span class="outline-pill">SNAPSHOT · 30 OCT 2026</span>
+          </div>
+          <div class="fund-toolbar">
+            <div
+              class="filter-chips"
+              id="fund-filters"
+              aria-label="Filter qualifying funds"
+            >
+              <button class="selected" data-filter="all" aria-pressed="true">
+                All shortlisted <span>3</span></button
+              ><button data-filter="cash" aria-pressed="false">
+                Cash / unit trust</button
+              ><button data-filter="prs" aria-pressed="false">PRS</button
+              ><button data-filter="epf" aria-pressed="false">
+                KWSP route
+              </button>
+            </div>
+            <span class="sort-label">Ranked by 10Y return ↓</span>
+          </div>
+          <div id="fund-cards" class="fund-grid"></div>
+          <p class="fund-caption">
+            Top qualifying funds within the 18 fully visible rows supplied, not
+            a ranking of the full fund universe. No single-year or YTD returns
+            are used to qualify funds. Historical returns are not guaranteed
+            future returns.
+          </p>
+          <details class="panel audit">
+            <summary>
+              See the screening rules & excluded funds
+              <span>18 records reviewed ↗</span>
+            </summary>
+            <p>
+              Only a verified Shariah fund with available 5Y and 10Y annualised
+              returns strictly greater than 8% passes. Missing history fails.
+              Rank by 10Y, then 5Y; display at most three. Mixed PRS and unit
+              trust results are a numerical screen, not a suitability
+              comparison. The partially visible final unit trust row is
+              excluded.
+            </p>
+            <div id="audit-table" class="table-scroll"></div>
+          </details>
+        </section>
+        <section id="allocation" class="section-block">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">04 / SEE THE BIGGER PICTURE</div>
+              <h2>Your plan, from every angle.</h2>
+              <p>
+                Explore a hypothetical allocation. These are your inputs, not
+                fund holdings.
+              </p>
+            </div>
+            <button id="reset-allocation" class="text-link">
+              Reset allocation ↺
+            </button>
+          </div>
+          <div class="allocation-grid">
+            <article class="panel allocation-panel">
+              <div class="donut-area">
+                <svg
+                  id="allocation-chart"
+                  viewBox="0 0 260 260"
+                  role="img"
+                  aria-label="Your illustrative allocation by fund"
+                ></svg>
+                <div class="donut-center">
+                  <span>YOUR ALLOCATION</span
+                  ><strong id="allocation-total"></strong
+                  ><small>Illustrative amount</small>
+                </div>
+              </div>
+              <div id="allocation-controls"></div>
+              <p class="micro-note">
+                Select a segment or fund to inspect its weight. Combining these
+                funds can still concentrate exposure in equities and Asia; three
+                funds do not automatically mean diversification.
+              </p>
+            </article>
+            <article class="panel editorial-panel">
+              <span class="eyebrow">A PERSPECTIVE WORTH KEEPING</span>
+              <h3>The best plan is one<br />you can stay with.</h3>
+              <div class="advice-item">
+                <span>01</span>
+                <div>
+                  <strong>Protect your foundation.</strong>
+                  <p>
+                    Keep accessible emergency savings. Only invest money whose
+                    time horizon and risk you can accept.
+                  </p>
+                </div>
+              </div>
+              <div class="advice-item">
+                <span>02</span>
+                <div>
+                  <strong>Let the route match the goal.</strong>
+                  <p>
+                    Cash offers flexibility. KWSP transfers remain retirement
+                    money. PRS has withdrawal restrictions; general early
+                    withdrawals can incur 8% tax.
+                  </p>
+                </div>
+              </div>
+              <div class="advice-item">
+                <span>03</span>
+                <div>
+                  <strong>Look beyond the winning number.</strong>
+                  <p>
+                    Compare fees, drawdowns, mandates and overlapping holdings.
+                    A strong decade is evidence to examine, not a promise.
+                  </p>
+                </div>
+              </div>
+              <button data-start class="button secondary">
+                Create my discussion plan <span>↗</span>
+              </button>
+            </article>
+          </div>
+        </section>
+        <section id="sources" class="section-block sources-section">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">CLARITY COMES WITH CONTEXT</div>
+              <h2>Transparent by design.</h2>
+            </div>
+            <span class="outline-pill">POLICY CHECK · 03 NOV 2026</span>
+          </div>
+          <div class="source-grid">
+            <a
+              href="https://www.kwsp.gov.my/en/member/savings/i-invest"
+              target="_blank"
+              rel="noopener"
+              ><span>01 / KWSP</span
+              ><strong>2026 eligibility & Basic Savings ↗</strong>
+              <p>
+                30% of the excess; minimum RM1,000. This calculator covers
+                qualifying members aged 18–54. Age 55+ uses different withdrawal
+                rules.
+              </p></a
+            ><a
+              href="https://www.ppa.my/joining-prs/prs-tax-relief/"
+              target="_blank"
+              rel="noopener"
+              ><span>02 / PPA & HASiL</span
+              ><strong>PRS tax relief through 2030 ↗</strong>
+              <p>
+                Up to RM3,000 shared with deferred annuity. Tax savings depend
+                on chargeable income and personal tax circumstances.
+              </p></a
+            ><a href="SOURCES.md" target="_blank" rel="noopener"
+              ><span>03 / DATA & METHOD</span
+              ><strong>Fund evidence & calculation notes ↗</strong>
+              <p>
+                UTC Connect screenshots dated 30 October 2026, supplied by the
+                site owner. Static snapshot, not an independently fetched live
+                return feed.
+              </p></a
+            >
+          </div>
+          <div class="source-links">
+            <a
+              target="_blank"
+              rel="noopener"
+              href="https://www.hasil.gov.my/en/individu/kadar-cukai/"
+              >HASiL rate bands ↗</a
+            ><a
+              target="_blank"
+              rel="noopener"
+              href="https://www.publicmutual.com.my/PM.Web.Portal.Admin/media/Downloads/2026/PRS/PRS%20Guide/PRS%20Guide%20%28E%29.pdf"
+              >Public Mutual 2026 PRS guide & rates ↗</a
+            ><button class="text-link" id="clear-saved">
+              Clear saved plan
+            </button>
+          </div>
+          <p class="disclosure">
+            Independent educational planning tool. No investment is executed, no
+            account is opened and no financial details are transmitted by this
+            app. Investments can lose value and capital is not guaranteed.
+            Projections are hypothetical. Verify current eligibility, charges
+            and documents with KWSP, the provider and your adviser before
+            deciding.
+          </p>
+        </section>
+        <footer>
+          <a class="footer-brand" href="#overview">N / WEALTH STUDIO</a
+          ><span>A clearer view of tomorrow.</span
+          ><span>Designed for possibility. Grounded in evidence.</span>
+        </footer>
+      </main>
+    </div>
+    <dialog id="search-dialog" class="search-dialog">
+      <div class="dialog-header">
+        <h2>Find your next step</h2>
+        <button class="icon-button" data-close aria-label="Close search">
+          ×
+        </button>
+      </div>
+      <input
+        id="tool-search"
+        type="search"
+        placeholder="Search KWSP, tax, funds, growth…"
+        aria-label="Search tools"
+      />
+      <div id="search-results"></div>
+      <p class="micro-note">Navigate with Tab · Enter to open · Esc to close</p>
+    </dialog>
+    <dialog id="plan-dialog" class="plan-dialog">
+      <div class="dialog-header">
+        <span class="eyebrow">YOUR WEALTH PLAN</span
+        ><button class="icon-button" data-close aria-label="Close plan">
+          ×
+        </button>
+      </div>
+      <div class="wizard-progress" aria-label="Plan progress">
+        <i></i><i></i><i></i>
+      </div>
+      <div id="wizard-content"></div>
+      <div class="wizard-actions">
+        <button id="wizard-back" class="button secondary">Back</button
+        ><button id="wizard-next" class="button primary">Continue →</button>
+      </div>
+      <p class="micro-note">
+        A discussion guide, not a suitability assessment or account application.
+        Saving is optional and stays in this browser.
+      </p>
+    </dialog>
+    <dialog id="fund-dialog" class="fund-dialog">
+      <div class="dialog-header">
+        <span class="eyebrow">FUND DETAIL</span
+        ><button class="icon-button" data-close aria-label="Close fund details">
+          ×
+        </button>
+      </div>
+      <div id="fund-detail"></div>
+    </dialog>
+    <div class="toast" id="toast" role="status" hidden></div>
+    <noscript
+      ><div class="noscript">
+        Enable JavaScript to use the calculators. Official sources remain
+        available below.
+      </div></noscript
+    >
+  </body>
 </html>

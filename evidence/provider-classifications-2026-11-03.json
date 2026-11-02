@@ -1,0 +1,34 @@
+{
+  "records": [
+    {
+      "FundCode": "27",
+      "FundAbbr": "PAIF",
+      "IsIslamic": true,
+      "IsEpfQualified": true,
+      "RiskLevel": 5
+    },
+    {
+      "FundCode": "43",
+      "FundAbbr": "PCIF",
+      "IsIslamic": true,
+      "IsEpfQualified": false,
+      "RiskLevel": 5
+    },
+    {
+      "FundCode": "39",
+      "FundAbbr": "PIATAF",
+      "IsIslamic": true,
+      "IsEpfQualified": false,
+      "RiskLevel": 5
+    },
+    {
+      "FundCode": "130",
+      "FundAbbr": "PRS-ISEQF",
+      "IsIslamic": true,
+      "IsEpfQualified": false,
+      "RiskLevel": 5
+    }
+  ],
+  "checkedDateMalaysia": "2026-11-03",
+  "source": "https://www.publicmutual.com.my/FundExplorerList/GetFundExplorerData?date=undefined"
+}
