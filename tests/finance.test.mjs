@@ -3,7 +3,8 @@ import assert from "node:assert/strict";
 import {
   BASIC_2026,
   eligible,
-  shortlist,
+  prsDefault,
+  routeFunds,
   project,
   prsTax,
   incomeTax,
@@ -31,35 +32,36 @@ test("KWSP boundaries: basic savings, minimum transfer, membership and age 55", 
   assert.equal(eligible(35.5, 100000).supported, false);
   assert.equal(eligible(35, 120000, false).amount, 0);
 });
-test("strict screen excludes exact 8%, missing history, and non-Shariah; caps at three", () => {
+test("updated route selection preserves the owner's choices without a false 8% claim", () => {
   assert.deepEqual(
-    shortlist().map((f) => f.id),
-    ["PIATAF", "PRS-ISEQF", "PAIF"],
+    routeFunds("cash").map((f) => f.id),
+    ["PIATAF", "PAIF", "PCIF"],
   );
   assert.deepEqual(
-    shortlist("epf").map((f) => f.id),
-    ["PAIF"],
+    routeFunds("epf").map((f) => f.id),
+    ["PAIF", "PESMACF"],
   );
-  assert.equal(shortlist("prs").length, 1);
-  assert.equal(shortlist("cash").length, 2);
-  const fixture = [
-    { id: "a", shariah: true, r5: 8, r10: 10 },
-    { id: "b", shariah: true, r5: 10, r10: null },
-    { id: "c", shariah: false, r5: 20, r10: 30 },
-  ];
-  assert.equal(shortlist("all", fixture).length, 0);
-  assert.equal(
-    shortlist(
-      "all",
-      [1, 2, 3, 4].map((i) => ({
-        id: String(i),
-        shariah: true,
-        r5: 10,
-        r10: 9 + i,
-      })),
-    ).length,
-    3,
-  );
+  assert.ok(routeFunds("epf").every((f) => f.epf && f.shariah));
+  assert.ok(routeFunds("cash").every((f) => f.shariah));
+  assert.equal(routeFunds("cash")[2].r5, 5.95);
+  assert.equal(routeFunds("prs", 35)[0].id, "PRS-IGRF");
+});
+
+test("PRS default bands and the first-contribution birthday exception", () => {
+  for (const [age, id] of [
+    [18, "PRS-IGRF"],
+    [44, "PRS-IGRF"],
+    [45, "PRS-IMDF"],
+    [54, "PRS-IMDF"],
+    [55, "PRS-ICVF"],
+    [80, "PRS-ICVF"],
+  ])
+    assert.equal(prsDefault(age), id);
+  assert.equal(prsDefault(44, true), "PRS-IMDF");
+  assert.equal(prsDefault(54, true), "PRS-ICVF");
+  assert.equal(prsDefault(35, true), "PRS-IGRF");
+  for (const age of [17, 101, NaN, 44.5]) assert.equal(prsDefault(age), null);
+  assert.deepEqual(routeFunds("prs", 17), []);
 });
 test("zero-rate projection reconciles gross contributions and NAV-based charges", () => {
   const p = project({

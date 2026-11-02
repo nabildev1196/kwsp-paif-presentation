@@ -53,11 +53,32 @@ export const FUNDS = [
   },
   {
     id: "PCIF",
-    name: "Public China Ittikal",
+    name: "Public China Ittikal Fund",
     type: "unit",
     shariah: true,
+    category: "China equity",
+    r3: 21.37,
     r5: 5.95,
     r10: 8.15,
+    code: 43,
+    risk: "Very high",
+    riskLevel: 5,
+    epf: false,
+    color: "#d6b782",
+  },
+  {
+    id: "PESMACF",
+    name: "Public Ehsan Mixed Asset Conservative Fund",
+    type: "unit",
+    shariah: true,
+    category: "Conservative mixed asset",
+    r3: 5.65,
+    r5: 2.23,
+    r10: 5.26,
+    code: 119,
+    riskLevel: 3,
+    epf: true,
+    color: "#d6b782",
   },
   {
     id: "PAPFF",
@@ -117,11 +138,15 @@ export const FUNDS = [
   },
   {
     id: "PRS-IGRF",
-    name: "PRS Islamic Growth",
+    name: "Public Mutual PRS Islamic Growth Fund",
     type: "prs",
     shariah: true,
     r5: 7.94,
     r10: 9.25,
+    r3: 19.8,
+    code: 105,
+    riskLevel: 4,
+    color: "#67e8bc",
   },
   {
     id: "PRS-GRF",
@@ -133,11 +158,15 @@ export const FUNDS = [
   },
   {
     id: "PRS-IMDF",
-    name: "PRS Islamic Moderate",
+    name: "Public Mutual PRS Islamic Moderate Fund",
     type: "prs",
     shariah: true,
     r5: 2.41,
     r10: 4.68,
+    r3: 9.95,
+    code: 106,
+    riskLevel: 3,
+    color: "#76bdff",
   },
   {
     id: "PRS-EQF",
@@ -165,15 +194,44 @@ export const FUNDS = [
   },
   {
     id: "PRS-ICVF",
-    name: "PRS Islamic Conservative",
+    name: "Public Mutual PRS Islamic Conservative Fund",
     type: "prs",
     shariah: true,
     r5: 2.88,
     r10: 3.68,
+    r3: 5.01,
+    code: 107,
+    riskLevel: 2,
+    color: "#d6b782",
   },
 ];
 export const finite = (n, min = 0, max = 1e9) =>
   Math.min(max, Math.max(min, Number.isFinite(Number(n)) ? Number(n) : min));
+// Updated owner selection: route-based choices, NOT the previous strict >8% screen.
+export function prsDefault(age, firstContributionNearBirthday = false) {
+  age = Number(age);
+  if (!Number.isInteger(age) || age < 18 || age > 100) return null;
+  const allocationAge =
+    firstContributionNearBirthday && (age === 44 || age === 54) ? age + 1 : age;
+  return allocationAge < 45
+    ? "PRS-IGRF"
+    : allocationAge < 55
+      ? "PRS-IMDF"
+      : "PRS-ICVF";
+}
+export function routeFunds(
+  route,
+  age = 35,
+  firstContributionNearBirthday = false,
+) {
+  const ids =
+    route === "epf"
+      ? ["PAIF", "PESMACF"]
+      : route === "prs"
+        ? [prsDefault(age, firstContributionNearBirthday)].filter(Boolean)
+        : ["PIATAF", "PAIF", "PCIF"];
+  return ids.map((id) => FUNDS.find((f) => f.id === id));
+}
 export function eligible(age, balance, member = true) {
   age = Number(age);
   balance = finite(balance);
@@ -189,28 +247,6 @@ export function eligible(age, balance, member = true) {
     raw,
     amount: member && raw >= 1000 ? Math.floor(raw * 100) / 100 : 0,
   };
-}
-export function shortlist(filter = "all", funds = FUNDS) {
-  return funds
-    .filter(
-      (f) =>
-        f.shariah &&
-        Number.isFinite(f.r5) &&
-        Number.isFinite(f.r10) &&
-        f.r5 > 8 &&
-        f.r10 > 8,
-    )
-    .filter(
-      (f) =>
-        filter === "all" ||
-        (filter === "prs"
-          ? f.type === "prs"
-          : filter === "epf"
-            ? f.epf
-            : f.type === "unit"),
-    )
-    .sort((a, b) => b.r10 - a.r10 || b.r5 - a.r5 || a.id.localeCompare(b.id))
-    .slice(0, 3);
 }
 export function project({
   initial = 0,

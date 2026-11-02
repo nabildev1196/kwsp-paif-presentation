@@ -1,13 +1,13 @@
 {
   "name": "n-wealth-studio",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "type": "module",
   "description": "Source-backed Malaysian retirement planning dashboard",
   "scripts": {
     "dev": "node server.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "node --check app.mjs && node --check finance.mjs && node --check server.mjs"
+    "check": "node --check planner.mjs && node --check page.mjs && node --check finance.mjs && node --check server.mjs"
   },
   "engines": {
     "node": ">=20"
