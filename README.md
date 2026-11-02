@@ -1,39 +1,33 @@
-# N Wealth Studio
+# N Wealth Studio / Masa depan lebih jelas
 
-A responsive, dependency-free retirement planning dashboard for Malaysian prospects. Premium dark interface, animated CSS glass orbit, keyboard-accessible charts and a compact Exchange Mode.
+A simple bilingual investment planning website for Malaysian prospects. Bahasa Melayu is the starting language; the BM / EN toggle translates the navigation, calculators, charts, fund explanations, dialogs and downloads without resetting inputs. Official fund names stay unchanged.
 
-## Run locally
+## The three routes
 
-Requires Node.js 20+. No package installation or build step.
+- **KWSP:** calculate 2026 Akaun Persaraan eligibility; PAIF is the growth focus, with PESMACF as a separate defensive investment option. Explain the EPF switching-fee exemption without presenting PESMACF as guaranteed cash.
+- **Cash / Tunai:** PIATAF, PAIF and PCIF, selected by the owner. PCIF's 5Y return of 5.95% is disclosed; the earlier strict 8% screening rule is superseded.
+- **PRS:** the Shariah default option chooses Growth below 45, Moderate at 45–54 and Conservative from 55. The first-contribution birthday exception is supported. PRS-ISEQF is an optional non-default choice.
+
+Each route includes a plain-language explanation, fund details and an interactive 3/5/10-year growth example. The PRS route includes progressive tax savings and the shared annuity limit. Detailed assumptions and scenario comparisons are expandable. A three-step discussion guide can be saved locally, downloaded or printed. No investment or account application is executed.
+
+## Local development
+
+Node.js 20+; no package installation or build step required.
 
 ```sh
 npm run dev
-```
-
-Open the printed local URL. ES modules require HTTP serving; do not double-click `index.html`.
-
-```sh
 npm test
 npm run check
 ```
 
-## Included
+Open the printed local URL. Serve over HTTP rather than opening the HTML file directly.
 
-- 2026 KWSP Akaun Persaraan eligibility (ages 18–54), membership check and RM1,000 minimum.
-- PRS relief with shared deferred-annuity cap and progressive resident tax savings.
-- Cash / KWSP / PRS scenarios with lump sum, monthly contributions, editable return/charges, 3/5/10-year shortcuts, stress comparison, year inspection and CSV export.
-- Strict Shariah screen: both 5Y and 10Y annualised returns above 8%, maximum three; transparent exclusions and route filters.
-- User-defined allocation donut, source details, global Ctrl/Cmd+K tool search, planning wizard, local save/restore, text download and print/PDF.
-- Mobile layout, native dialog focus management and reduced-motion support.
+## Static hosting
 
-## Hosting
+Serve the repository root. The app uses index.html, styles.css, planner.mjs, page.mjs, finance.mjs and SOURCES.md. Relative paths and .nojekyll support GitHub Pages. No API key or backend is needed. server.mjs is only a localhost preview server. The original presentation is retained at presentation-archive.html.
 
-Serve the repository root as a static site (including GitHub Pages). `index.html`, `styles.css`, `app.mjs`, `finance.mjs` and `SOURCES.md` are sufficient. All paths are relative and support a repository subpath. No secret, API key or server is required. The optional `server.mjs` is for localhost development only. The previous presentation remains available as `presentation-archive.html`.
+## Evidence
 
-## Evidence and boundaries
+Read [SOURCES.md](SOURCES.md) for the dated source records and calculation assumptions. Returns are from owner-supplied UTC Connect screenshots dated 30 October 2026, not live or market-wide rankings. Official classifications and rules were checked 3 November 2026. [VALIDATION.md](VALIDATION.md) records the checks performed.
 
-Read [SOURCES.md](SOURCES.md) before changing financial content. Returns are the owner's **30 October 2026 screenshot snapshot**, covering **18 complete rows**, not a market-wide live ranking. Provider Shariah/EPF classifications were checked 3 November 2026. The qualifying shortlist is PIATAF, PRS-ISEQF and PAIF; only PAIF is EPF-qualified among these.
-
-No fabricated tickers, holdings or sector exposures are shown. Exchange Mode is a denser scenario view. Onboarding creates a discussion guide, not a regulated account or a suitability assessment. Investment execution, account integration, identity collection and real-time NAV feeds are outside this static app.
-
-Future releases must review the dated policy table, tax rules and fund evidence together. Projections are illustrations and capital can be lost.
+The app does not invent live prices, holdings or sector exposures. The fixed-rate projection does not simulate automatic future PRS allocation changes. Review policy and fund evidence before a later-year release.

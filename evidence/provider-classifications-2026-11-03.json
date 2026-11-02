@@ -1,4 +1,6 @@
 {
+  "checkedDateMalaysia": "2026-11-03",
+  "source": "https://www.publicmutual.com.my/FundExplorerList/GetFundExplorerData?date=undefined",
   "records": [
     {
       "FundCode": "27",
@@ -15,6 +17,13 @@
       "RiskLevel": 5
     },
     {
+      "FundCode": "119",
+      "FundAbbr": "PESMACF",
+      "IsIslamic": true,
+      "IsEpfQualified": true,
+      "RiskLevel": 3
+    },
+    {
       "FundCode": "39",
       "FundAbbr": "PIATAF",
       "IsIslamic": true,
@@ -22,13 +31,32 @@
       "RiskLevel": 5
     },
     {
+      "FundCode": "105",
+      "FundAbbr": "PRS-IGRF",
+      "IsIslamic": true,
+      "IsEpfQualified": false,
+      "RiskLevel": 4
+    },
+    {
+      "FundCode": "106",
+      "FundAbbr": "PRS-IMDF",
+      "IsIslamic": true,
+      "IsEpfQualified": false,
+      "RiskLevel": 3
+    },
+    {
       "FundCode": "130",
       "FundAbbr": "PRS-ISEQF",
       "IsIslamic": true,
       "IsEpfQualified": false,
       "RiskLevel": 5
+    },
+    {
+      "FundCode": "107",
+      "FundAbbr": "PRS-ICVF",
+      "IsIslamic": true,
+      "IsEpfQualified": false,
+      "RiskLevel": 2
     }
-  ],
-  "checkedDateMalaysia": "2026-11-03",
-  "source": "https://www.publicmutual.com.my/FundExplorerList/GetFundExplorerData?date=undefined"
+  ]
 }

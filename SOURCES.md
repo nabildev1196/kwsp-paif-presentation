@@ -22,30 +22,54 @@ Membership: Malaysian citizens, permanent residents, or non-Malaysians who joine
 
 Claimable PRS relief = min(gross annual PRS contribution, max(0, RM3,000 − deferred annuity relief used)). Non-residents receive zero relief in this tool. Enter chargeable income **after other reliefs, including annuity relief, but before PRS relief**. Tax saving = progressive tax before PRS relief minus progressive tax after PRS relief. This handles crossing rate bands. It excludes rebates, zakat, special regimes, joint assessment effects and other personal adjustments; it is not a tax return or guaranteed refund. Savings are not added to investment returns. Future tax-rate changes are not projected.
 
-## Fund screen and provenance
+## Fund choices and provenance
 
-Returns were manually transcribed from the two UTC Connect performance screenshots supplied by the repository owner. Both screenshots state **30/10/2026**. They show 5-year and 10-year **annualised** returns. The unit trust screenshot is cropped: only nine complete unit trust rows are used; the partially visible e-Islamic Sustainable Millennial row is excluded. Nine PRS rows are complete. This dataset is **18 observed rows, not the complete Public Mutual fund universe**. The app does not claim a market-wide top three.
+The current app follows the owner's revised route choices, replacing the earlier strict greater-than-8% screen. It does not claim the chosen funds are the top performers across the whole fund universe. Official fund names are preserved in both interface languages.
 
-Qualify only where verified Shariah status is true, both 5Y and 10Y figures exist, and **each is strictly greater than 8%**. Rank by 10Y return, then 5Y, then identifier; show at most three. Apply route filters without weakening eligibility. An annualised result above 8% does not mean every year returned above 8%.
+- **KWSP:** PAIF is the main growth choice; PESMACF is a separate, more defensive allocation to discuss. Both are EPF-qualified and Shariah-compliant in the provider dataset checked 3 November 2026.
+- **Cash:** PIATAF, PAIF, PCIF, in the owner's chosen order. PCIF has 5Y 5.95% and 10Y 8.15%, so it would fail the old requirement that both exceed 8%. That old rule is no longer used.
+- **PRS:** the Shariah default option maps age to Islamic Growth, Islamic Moderate or Islamic Conservative. PRS-ISEQF is explained separately as a non-default option, not automatically selected by age.
 
-| Fund      | 3Y annualised | 5Y annualised | 10Y annualised | Route           |
-| --------- | ------------: | ------------: | -------------: | --------------- |
-| PIATAF    |        34.09% |        14.91% |         13.19% | Cash unit trust |
-| PRS-ISEQF |        25.40% |        10.51% |         10.27% | PRS             |
-| PAIF      |        24.67% |         8.09% |          8.98% | Cash / EPF      |
+Returns were transcribed from the owner's UTC Connect screenshots dated **30 October 2026**. The newer EPF screenshot adds PESMACF. These are annualised period returns, not returns achieved in every individual year. No full-universe or live-return claim is made.
 
-PCIF fails at 5Y 5.95%, even though 10Y is 8.15%. PRS-IGRF fails at 5Y 7.94%, even though 10Y is 9.25%. All excluded values and reasons are inspectable in the app. Excluded non-Islamic rows are not relied on for selection; absence of verified Shariah status fails the rule.
+| Fund      | 3Y annualised | 5Y annualised | 10Y annualised |
+| --------- | ------------: | ------------: | -------------: |
+| PIATAF    |        34.09% |        14.91% |         13.19% |
+| PAIF      |        24.67% |         8.09% |          8.98% |
+| PCIF      |        21.37% |         5.95% |          8.15% |
+| PESMACF   |         5.65% |         2.23% |          5.26% |
+| PRS-IGRF  |        19.80% |         7.94% |          9.25% |
+| PRS-IMDF  |         9.95% |         2.41% |          4.68% |
+| PRS-ICVF  |         5.01% |         2.88% |          3.68% |
+| PRS-ISEQF |        25.40% |        10.51% |         10.27% |
 
-Shariah classification and EPF qualification were checked against the provider's [official Fund Explorer endpoint](https://www.publicmutual.com.my/FundExplorerList/GetFundExplorerData?date=undefined), retrieved 3 November 2026. Codes: PAIF 27, PIATAF 39, PCIF 43, PRS-ISEQF 130. All four are Islamic; among these only PAIF is EPF-qualified. Reconfirm current approval in i-Akaun. The [provider's older EPF list](https://www.publicmutual.com.my/pmb/EPF-Investment-Scheme-List) is explicitly dated April 2024 and is not used as the sole evidence for 2026 eligibility.
+[Official Fund Explorer dataset](https://www.publicmutual.com.my/FundExplorerList/GetFundExplorerData?date=undefined) supplies classification, product codes, EPF eligibility and provider risk levels. The retained evidence JSON records the checked fields. Provider risk levels are not the same as the screenshot's three-year volatility class: PESMACF has provider risk level 3 even though that screenshot labels recent volatility very low.
 
-Official Product Highlights Sheets independently establish the shortlisted Shariah mandates, fees and risks:
+Official product sheets: [PAIF code 27](https://www.publicmutual.com.my/Product-Highlight?langcode=E&sc=27), [PIATAF code 39](https://www.publicmutual.com.my/Product-Highlight?langcode=E&sc=39), [PCIF code 43](https://www.publicmutual.com.my/Product-Highlight?langcode=E&sc=43), [PESMACF code 119](https://www.publicmutual.com.my/Product-Highlight?langcode=E&sc=119), [PRS core funds codes 105/106/107](https://www.publicmutual.com.my/Product-Highlight?langcode=E&sc=105), [PRS-ISEQF code 130](https://www.publicmutual.com.my/Product-Highlight?langcode=E&sc=130).
 
-- [PIATAF PHS, 30 January 2026](https://www.publicmutual.com.my/Product-Highlight?langcode=E&sc=39): mixed asset, Shariah; sales charge up to 5% of NAV/unit; management 1.65% p.a.; trustee 0.06% p.a. with limits. RM1,000 initial / RM100 additional minimum.
-- [PAIF PHS, 30 January 2026](https://www.publicmutual.com.my/Product-Highlight?langcode=E&sc=27): Shariah equity; same cited sales charge, management and trustee rates and minimum investments.
-- [PRS-ISEQF PHS, 30 June 2026](https://www.publicmutual.com.my/Product-Highlight?langcode=E&sc=130): Shariah equity; sales charge up to **3%**, not the screenshot simulator's entered 5%; management 1.60%, trustee 0.04%, PPA administration 0.04% p.a. RM100 initial/additional. PPA opening RM10 and annual RM8 (exceptions apply). General early withdrawals from sub-account B normally incur 8% tax; exceptions apply. Retirement withdrawal from age 55.
-- [PCIF PHS, 27 February 2026](https://www.publicmutual.com.my/Product-Highlight?langcode=E&sc=43): certified Shariah but fails the screenshot performance rule.
+PESMACF's 31 July 2026 PHS describes a conservative mixed-asset fund: 60–75% sukuk, up to 35% Shariah equities, and a medium-to-long horizon of at least three years. It is not a money-market fund, guaranteed deposit or short-term cash substitute. All funds can lose value.
 
-PHS performance tables use different reporting periods and may label average annual returns differently; their return figures are not mixed into the supplied 30 October screen. A mixed PRS/unit-trust ranking is a numeric historical filter, not a suitability recommendation. The app does not invent sector tags, holdings, real-time prices or NAV history. Allocation charts show user-entered hypothetical fund amounts, not current asset weights inside the funds.
+## Switching charges
+
+[Public Mutual's official switching guide](https://www.publicmutual.com.my/pmb/investor-guide-switching) expressly exempts **units under the EPF scheme** from switching charges, both within and after 90 days. PAIF/PESMACF eligibility, minimum amounts, account restrictions and prevailing terms must still be checked. Initial investment sales charges and ongoing expenses are separate from a switching fee.
+
+Cash switches are not universally free merely because both funds belong to Public Mutual. Charges depend on sales-charge history, holding period, channel and membership. The app avoids promising free cash switching. The current prospectus takes precedence where terms conflict. No tactical switching schedule or trade is executed by the app.
+
+## PRS age-based default option
+
+[Public Mutual PRS](https://www.publicmutual.com.my/pmb/private-retirement-scheme-prs) and [official PRS fund-selection rules](https://www.publicmutualonline.com.my/General/PRSFundSelection.html) establish these default groups:
+
+| Age      | Shariah core fund                             | Provider risk level |
+| -------- | --------------------------------------------- | ------------------: |
+| Below 45 | PRS Islamic Growth (PRS-IGRF, code 105)       |                   4 |
+| 45–54    | PRS Islamic Moderate (PRS-IMDF, code 106)     |                   3 |
+| 55+      | PRS Islamic Conservative (PRS-ICVF, code 107) |                   2 |
+
+This mapping applies **when the member selects the default option**, not to every PRS investor automatically. A first contribution within one month before turning 45 or 55 is allocated to the next age group; the app exposes a checkbox at age 44/54 for this exception. An invalid or under-18 age produces no default selection.
+
+Unless instructed otherwise, existing units move gradually to the next core fund over five annual tranches, beginning by the end of the next calendar month after reaching the threshold age. The default transition has no switching charge. It is not an instant transfer of all accumulated savings. Non-default investors may select funds regardless of age. PRS-ISEQF is a non-core equity fund and is not the age-based default.
+
+The 30 June 2026 core PHS permits up to **3% sales charge for all three core funds**, including Conservative. Separate fund expenses, PPA administration and account fees apply. General early withdrawals are restricted to sub-account B and normally attract 8% tax, with specified exceptions; full retirement withdrawal is available from 55.
 
 ## Growth simulator
 
@@ -59,12 +83,12 @@ For gross initial sum L, gross end-of-month addition C, years Y, annual effectiv
 
 The zero-rate path is handled without division by zero. Contributions occur at month-end. The displayed gain/loss is ending value minus **gross** contributions, so it includes the impact of sales charges. A 5% charge on NAV means RM10,000 gross purchases RM10,000/1.05, not RM9,500, of units.
 
-Cash defaults to 5%, PRS to 3%, and the KWSP route to an editable 0.5% online i-Invest illustration. These are assumptions, not transaction quotes; channel fees may differ. The chosen annual return is assumed after recurring fund-level expenses. Historical NAV returns already reflect fund-level expenses, so those charges must not be deducted twice. PRS account fees, personal taxes, tax savings, inflation and withdrawals are excluded. Distributions are assumed reinvested. Stress at −5% p.a. is one scenario, not a worst case or probabilistic confidence interval.
+Cash defaults to a 5% sales charge, PRS to 3%, and the KWSP route to an editable 0.5% online i-Invest illustration. Annual return assumptions are 8% for the equity examples, 3% for PESMACF, and 6%/4%/3% for Growth/Moderate/Conservative PRS examples. These chosen assumptions are not expected returns or copied historical rates. These are assumptions, not transaction quotes; channel fees may differ. The chosen annual return is assumed after recurring fund-level expenses. Historical NAV returns already reflect fund-level expenses, so those charges must not be deducted twice. PRS account fees, personal taxes, tax savings, inflation and withdrawals are excluded. Distributions are assumed reinvested. Stress at −5% p.a. is one scenario, not a worst case or probabilistic confidence interval.
 
-The app shows 3-, 5- and 10-year shortcuts and a 1–30-year horizon. Fixed calendar labels start in 2026, the policy snapshot year; this version requires a policy/data review for a later-year release. No projection is a historical backtest.
+The app shows 3-, 5- and 10-year shortcuts and a 1–30-year horizon. Chart labels use elapsed years, not future policy dates. This version uses 2026 policy evidence and needs a review for a later-year release. No projection is a historical backtest. The illustration does not model future automatic PRS age transitions.
 
 ## Privacy and maintenance
 
-Inputs are kept in memory until the visitor explicitly saves the plan in browser local storage. No server submission, account creation or analytics tracking is implemented. Google Fonts serves typography; it receives ordinary font requests, not calculator inputs. External source links leave the app. Saved plans can be cleared; downloads are generated locally. No identifying information is requested.
+Inputs are kept in memory until the visitor explicitly saves the plan in browser local storage. The selected interface language is remembered separately. No server submission, account creation or analytics tracking is implemented. Google Fonts serves typography; it receives ordinary font requests, not calculator inputs. External source links leave the app. Saved plans can be cleared; downloads are generated locally. No identifying information is requested.
 
-Before changing snapshot dates: update the full relevant Basic Savings table, tax-year evidence, fund returns/classifications and source labels together. Run the financial tests and inspect browser behaviour. Never fill a shortlist with ineligible funds to reach three.
+Before changing snapshot dates: update the full relevant Basic Savings table, tax-year evidence, fund returns/classifications and source labels together. Run the financial tests and inspect browser behaviour. Preserve the route-specific selection and avoid restoring the superseded 8% requirement.
